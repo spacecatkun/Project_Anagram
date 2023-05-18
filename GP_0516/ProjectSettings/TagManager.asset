@@ -5,8 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Dragin
   - Dragnot
+  - Dragin1
+  - Dragin2
+  - Dragin3
+  - Dragin4
+  - Dragin5
   layers:
   - Default
   - TransparentFX
