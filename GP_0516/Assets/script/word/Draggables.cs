@@ -16,7 +16,7 @@ public class Draggables : MonoBehaviour
     private float _movemonetTime = 7f;
     private System.Nullable<Vector3> _movemonetDestination;
     public int wordindex = 0;
-    public bool checkb;
+    private bool check_in = false;
 
     void Start()
     {
@@ -46,11 +46,23 @@ public class Draggables : MonoBehaviour
                 if (_rigidbody.gravityScale == 0f)
                 {
                     transform.position = Vector3.Lerp(transform.position, _movemonetDestination.Value, _movemonetTime * Time.fixedDeltaTime);
-                    checkp = _movemonetDestination.Value;
                 }
             }
         }
-        checkb = true;
+        if (_wordMKcontroller.MK_remove > 0  && check_in == true)
+        {
+            _wordMKcontroller.MK_remove--;
+            Destroy(gameObject);
+        }
+        else if (_wordMKcontroller.MK_reset > 0 && check_in == true)
+        {
+            _wordMKcontroller.MK_reset--;
+            transform.position = checkp;
+            _rigidbody.gravityScale = 1f;
+            _collider.enabled = true;
+            check_in = false;
+            _movemonetDestination = null;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -66,65 +78,52 @@ public class Draggables : MonoBehaviour
 
         if(other.CompareTag("Dragin1"))
         {
-            checkp = new Vector3(18.5f, 3.5f, 7.955483f);
+            checkp = new Vector3(18.5f, 1.5f, 0f);
             _movemonetDestination = other.transform.position;
             _wordMKcontroller.word_1 = word;
             _collider.enabled = false;
+            check_in = true;
+            _wordMKcontroller.MK_count++;
         }
         else if (other.CompareTag("Dragin2"))
         {
+            checkp = new Vector3(20.5f, 1.5f, 0f);
             _movemonetDestination = other.transform.position;
             _wordMKcontroller.word_2 = word;
             _collider.enabled = false;
+            check_in = true;
+            _wordMKcontroller.MK_count++;
         }
         else if (other.CompareTag("Dragin3"))
         {
+            checkp = new Vector3(22.5f, 1.5f, 0f);
             _movemonetDestination = other.transform.position;
             _wordMKcontroller.word_3 = word;
             _collider.enabled = false;
+            check_in = true;
+            _wordMKcontroller.MK_count++;
         }
         else if (other.CompareTag("Dragin4"))
         {
+            checkp = new Vector3(24.5f, 1.5f, 0f);
             _movemonetDestination = other.transform.position;
             _wordMKcontroller.word_4 = word;
             _collider.enabled = false;
+            check_in = true;
+            _wordMKcontroller.MK_count++;
         }
         else if (other.CompareTag("Dragin5"))
         {
+            checkp = new Vector3(26.5f, 1.5f, 0f);
             _movemonetDestination = other.transform.position;
             _wordMKcontroller.word_5 = word;
             _collider.enabled = false;
+            check_in = true;
+            _wordMKcontroller.MK_count++;
         }
         else if (other.CompareTag("Dragnot"))
         {
             _movemonetDestination = LastPosition;
-        }
-    }
-    private void removeword(int index)
-    {
-        if(index == 1)
-        {
-            _wordMKcontroller.word_1 = null;
-        }
-        else if(index == 2)
-        {
-            _wordMKcontroller.word_2 = null;
-        }
-        else if (index == 3)
-        {
-            _wordMKcontroller.word_3 = null;
-        }
-        else if (index == 4)
-        {
-            _wordMKcontroller.word_4 = null;
-        }
-        else if (index == 5)
-        {
-            _wordMKcontroller.word_5 = null;
-        }
-        else
-        {
-            return;
         }
     }
 }

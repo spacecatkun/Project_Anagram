@@ -18,6 +18,10 @@ public class WordMKController : MonoBehaviour
     private string index;
     private GameObject tower;
     private string path = "M_word/";
+    public int MK_remove = 0;
+    public int MK_reset = 0;
+    public int MK_count = 0;
+
 
     void FixedUpdate()
     {
@@ -33,10 +37,23 @@ public class WordMKController : MonoBehaviour
             path = path + mkingword;
             tower = Resources.Load<GameObject>(path);
             Instantiate(tower);
+            MK_remove = MK_count;
+            word_1 = null;
+            word_2 = null;
+            word_3 = null;
+            word_4 = null;
+            word_5 = null;
+            MK_count = 0;
         }
         else
         {
-            Debug.Log("not");
+            MK_reset = MK_count;
+            word_1 = null;
+            word_2 = null;
+            word_3 = null;
+            word_4 = null;
+            word_5 = null;
+            MK_count = 0;
         }
     }
 }
