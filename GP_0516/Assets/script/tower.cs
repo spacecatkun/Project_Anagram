@@ -76,9 +76,9 @@ public class tower : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected() 
-    {
-        Handles.color = Color.cyan;
-        Handles.DrawWireDisc(transform.position, transform.forward, range);
-    }
+    //private void OnDrawGizmosSelected() 
+    //{
+    //    Handles.color = Color.cyan;
+    //    Handles.DrawWireDisc(transform.position, transform.forward, range);
+    //}
 }
