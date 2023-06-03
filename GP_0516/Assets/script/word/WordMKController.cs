@@ -37,7 +37,7 @@ public class WordMKController : MonoBehaviour
         {
             path_2 = path + mkingword;
             tower = Resources.Load<GameObject>(path_2);
-            Instantiate(tower);
+            Instantiate(tower, new Vector3(17, -1.5f, 0), Quaternion.identity);
             MK_remove = MK_count;
             word_1 = null;
             word_2 = null;
