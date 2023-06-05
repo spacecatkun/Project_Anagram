@@ -11,6 +11,7 @@ public class Random_Alpha_MK : MonoBehaviour
     private string path_2;
     private GameObject Pre_Alpha;
     private Vector3 pos = new Vector3(15f, 1.5f, 0f);
+    public GameObject Quiz;
 
     public void DropWord()
     {
@@ -25,5 +26,9 @@ public class Random_Alpha_MK : MonoBehaviour
         Select_Alpha = Alpha[R_Alpha];
         path_2 = path + Select_Alpha;
         Pre_Alpha = Resources.Load<GameObject>(path_2);
+    }
+    public void MKQuiz()
+    {
+        Instantiate(Quiz, new Vector3(16f, 0, 0), Quaternion.identity);
     }
 }
