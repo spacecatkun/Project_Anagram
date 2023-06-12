@@ -8,7 +8,7 @@ public class Count_stop : MonoBehaviour
     public GameObject R_button;
     private void Update()
     {
-        if(count > 9)
+        if(count > 30)
         {
             DisE_button();
         }

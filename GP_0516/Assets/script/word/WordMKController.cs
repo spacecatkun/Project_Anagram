@@ -14,7 +14,7 @@ public class WordMKController : MonoBehaviour
     public string word_4;
     public string word_5;
     private string mkingword;
-    private string[] c_word = { "ABCDE" };
+    private string[] c_word = { "DUSTY","STATE","NIGHT" };
     private string index;
     private GameObject tower;
     private string path = "M_word/";

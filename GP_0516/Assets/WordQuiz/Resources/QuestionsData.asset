@@ -14,4 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questions:
   - questionImage: {fileID: 21300000, guid: f65d95a595194b64897cfcd8109ce1eb, type: 3}
-    answer: ABCDE
+    answer: dusty
+    ques: study
+  - questionImage: {fileID: 21300000, guid: f65d95a595194b64897cfcd8109ce1eb, type: 3}
+    answer: night
+    ques: thing
+  - questionImage: {fileID: 21300000, guid: f65d95a595194b64897cfcd8109ce1eb, type: 3}
+    answer: state
+    ques: taste

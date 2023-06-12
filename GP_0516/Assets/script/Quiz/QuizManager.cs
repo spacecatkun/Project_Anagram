@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class QuizManager : MonoBehaviour
 {
@@ -24,9 +25,11 @@ public class QuizManager : MonoBehaviour
     private int currentAnswerIndex = 0, currentQuestionIndex = 0;   //index to keep track of current answer and current question
     private bool correctAnswer = true;                      //bool to decide if answer is correct or not
     private string answerWord;
+    private string quesWord;
     public static int lasttime = 3;
     public Text lasttime_t;
     public GameObject clear;
+    public int Qindex = 0;
 
     private void Awake()
     {
@@ -50,9 +53,11 @@ public class QuizManager : MonoBehaviour
     void SetQuestion()
     {
         gameStatus = GameStatus.Playing;                //set GameStatus to playing 
+        currentQuestionIndex = Random.Range(0, Qindex);
 
         //set the answerWord string variable
         answerWord = questionDataScriptable.questions[currentQuestionIndex].answer;
+        quesWord = questionDataScriptable.questions[currentQuestionIndex].ques;
         //set the image of question
 
         ResetQuestion();                               //reset the answers and options value to orignal     
@@ -61,18 +66,16 @@ public class QuizManager : MonoBehaviour
         Array.Clear(wordsArray, 0, wordsArray.Length);  //clear the array
 
         //add the correct char to the wordsArray
-        for (int i = 0; i < answerWord.Length; i++)
+        for (int i = 0; i < quesWord.Length; i++)
         {
-            wordsArray[i] = char.ToUpper(answerWord[i]);
+            wordsArray[i] = char.ToUpper(quesWord[i]);
         }
 
         //add the dummy char to wordsArray
-        for (int j = answerWord.Length; j < wordsArray.Length; j++)
+        for (int j = quesWord.Length; j < wordsArray.Length; j++)
         {
             wordsArray[j] = (char)UnityEngine.Random.Range(65, 90);
         }
-
-        wordsArray = ShuffleList.ShuffleListItems<char>(wordsArray.ToList()).ToArray(); //Randomly Shuffle the words array
 
         //set the options words Text value
         for (int k = 0; k < optionsWordList.Length; k++)
@@ -93,7 +96,7 @@ public class QuizManager : MonoBehaviour
         }
 
         //Now deactivate the unwanted answerWordList gameobject (object more than answer string length)
-        for (int i = answerWord.Length; i < answerWordList.Length; i++)
+        for (int i = quesWord.Length; i < answerWordList.Length; i++)
         {
             answerWordList[i].gameObject.SetActive(false);
         }
@@ -177,14 +180,20 @@ public class QuizManager : MonoBehaviour
             answerWordList[currentAnswerIndex].SetWord('_');
         }
     }
-
+    public void close()
+    {
+        lasttime = 0;
+    }
 }
+
+
 
 [System.Serializable]
 public class QuestionData
 {
     public Sprite questionImage;
     public string answer;
+    public string ques;
 }
 
 public enum GameStatus

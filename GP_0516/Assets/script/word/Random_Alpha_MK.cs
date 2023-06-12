@@ -15,10 +15,14 @@ public class Random_Alpha_MK : MonoBehaviour
 
     public void DropWord()
     {
-        RandomAlpha();
-        Instantiate(Pre_Alpha, pos, Quaternion.Euler(0, 0, 35f));
-        Pre_Alpha = null;
-        path_2 = null;
+        if(PlayerStats.Money >= 5)
+        {
+            PlayerStats.Money = PlayerStats.Money - 5;
+            RandomAlpha();
+            Instantiate(Pre_Alpha, pos, Quaternion.Euler(0, 0, 35f));
+            Pre_Alpha = null;
+            path_2 = null;
+        }
     }
     void RandomAlpha()
     {
